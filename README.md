@@ -15,11 +15,11 @@ List of sites Added:\
 https://super.rugby/superrugby/news/
 
 List of sites to Add:\
-https://www.superxv.com/news/\
-https://wwos.nine.com.au/rugby\
-https://www.foxsports.com.au/rugby/super-rugby\
-https://www.rugby.com.au/news?teamcomp=Super+Rugby&type=&keyword=\
-https://www.stuff.co.nz/sport/rugby/super-rugby\
+https://www.superxv.com/news/ \
+https://wwos.nine.com.au/rugby \
+https://www.foxsports.com.au/rugby/super-rugby \
+https://www.rugby.com.au/news?teamcomp=Super+Rugby&type=&keyword= \
+https://www.stuff.co.nz/sport/rugby/super-rugby
 
 Let me know if there are more sources I should add.
 
