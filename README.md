@@ -5,11 +5,11 @@ List of Super Rugby News sites below.
 
 To Run:
 ```
-npm install
+yarn install or npm install
 node index.js
 ```
 
-view data locally on http://localhost:3000/api/super-rugby-news-aggregator
+View data locally on http://localhost:3000/api/super-rugby-news-aggregator
 
 List of sites Added:\
 https://super.rugby/superrugby/news/
