@@ -1,68 +1,17 @@
-const axios = require('axios')
-const cheerio = require('cheerio')
-const express = require('express')
+import app from './app.js'
+
+// NewsFeeds
+import superRugbyNewsFeed from './NewsFeeds/superRugby.js'
 
 async function getNewsFeed() {
-  try {
-    const url = 'https://super.rugby/superrugby/news/'
+  const feeds = []
 
-    const { data } = await axios({
-      method: "GET",
-      url: url,
-    })
+  const superRugbyNewsFeed = superRugbyNewsFeed()
 
-    const articles = []
-    const keys = ['date', 'title', 'summary']
+  feeds.push(superRugbyNewsFeed)
 
-    const $ = cheerio.load(data)
-
-    $('.media-body', data).each((parentIdx, parentElem) => {
-      let keyIndex = 0
-      const articleObject = {}
-
-      // Get First 5 Articles
-      if (parentIdx <= 4){
-        $(parentElem).children().each((childIndex, childElem) => {
-          const text = $(childElem).text()
-
-          // Get Article url
-          if (childIndex === 1) {
-            const urlPrefix = "https://super.rugby"
-
-            const child = childElem.firstChild
-            const url = child.attribs.href
-
-            if (url) { articleObject["url"] = urlPrefix + url }
-          }
-
-          let unique = true
-          const key = keys[keyIndex]
-
-          if (key === 'title'){
-            unique = !articles.some(article => {
-              article.key === text
-            });
-          }
-
-          if (unique && text) {
-            articleObject[key] = text
-
-            keyIndex++
-          }
-        })
-
-        articles.push(articleObject)
-      }
-    })
-
-    console.log('articles = ', articles);
-    return articles
-  } catch (err) {
-    console.error(err);
-  }
+  return feeds
 }
-
-const app = express()
 
 app.get('/api/super-rugby-news-aggregator', async (request, result) => {
   try {
@@ -77,6 +26,10 @@ app.get('/api/super-rugby-news-aggregator', async (request, result) => {
     })
   }
 })
+
+app.get('/favicon.ico', (req, res) => {
+  res.sendFile("myfavicon.ico");
+});
 
 app.listen(3000, () => {
   console.log('Running on port 3000');
